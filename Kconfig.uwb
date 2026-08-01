@@ -1,0 +1,55 @@
+#
+# Copyright (c) 2026 Nordic Semiconductor ASA
+# Copyright (c) 2026 Shenzhen Geezpai Technology Co., Ltd.
+#
+# SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
+#
+
+config APP_UWB
+        bool "Application UWB host module"
+        default y
+        select UART_INTERRUPT_DRIVEN
+        help
+          Enable the application UWB host module that connects to the external
+          UWB device through UART and interrupt GPIO.
+
+if APP_UWB
+
+config APP_UWB_RESPONSE_TIMEOUT_MS
+        int "UWB response timeout in milliseconds"
+        default 200
+        range 50 5000
+        help
+          Timeout used by the UCI host while waiting for responses from the
+          UWB module.
+
+config APP_UWB_REASSEMBLE_TIMEOUT_MS
+        int "UWB reassemble timeout in milliseconds"
+        default 100
+        range 20 5000
+        help
+          Timeout used by the UCI host while waiting for remaining UCI frame
+          segments.
+
+config APP_UWB_RX_BUF_ITEMS
+        int "UWB receive buffer slots"
+        default 4
+        range 2 16
+        help
+          Number of buffered received UCI frames.
+
+config APP_UWB_RX_BUF_LEN
+        int "UWB receive buffer length"
+        default 259
+        range 64 1024
+        help
+          Maximum bytes stored for a single received UCI frame.
+
+config APP_UWB_PKT_SLOTS
+        int "UWB packet slots"
+        default 4
+        range 2 16
+        help
+          Number of packet records used by the UCI host per UWB instance.
+
+endif # APP_UWB

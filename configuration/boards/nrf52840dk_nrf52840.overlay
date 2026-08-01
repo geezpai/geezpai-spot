@@ -1,0 +1,269 @@
+/*
+ * Copyright (c) 2026 Nordic Semiconductor ASA
+ * Copyright (c) 2026 Shenzhen Geezpai Technology Co., Ltd.
+ *
+ * SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
+ */
+
+/ {
+        aliases {
+                pwm-spk = &pwm_spk0;
+                uwb-int = &uwb_irq;
+        };
+
+	chosen {
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+		zephyr,display = &st7735r;
+                uci,interface = &uart1;
+	};
+
+	mipi_dbi0: mipi_dbi0 {
+		compatible = "zephyr,mipi-dbi-spi";
+		status = "okay";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		spi-dev = <&spi2>;
+		dc-gpios = <&gpio0 28 GPIO_ACTIVE_HIGH>;
+		reset-gpios = <&gpio0 2 GPIO_ACTIVE_LOW>;
+		write-only;
+	};
+
+        pwmspk {
+                compatible = "pwm-leds";
+
+                pwm_spk0: pwm-spk-0 {
+                        pwms = <&pwm0 0 PWM_MSEC(20) PWM_POLARITY_NORMAL>;
+                };
+        };
+
+        uwb_int0: uwb_int0 {
+                compatible = "gpio-keys";
+
+                uwb_irq: uwb_irq {
+                        gpios = <&gpio0 23 GPIO_ACTIVE_HIGH>;
+                        label = "UWB_INT";
+                };
+        };
+};
+
+&pinctrl {
+	uart0_default: uart0_default {
+		group1 {
+			psels = <NRF_PSEL(UART_TX, 0, 13)>,
+				<NRF_PSEL(UART_RX, 0, 14)>;
+		};
+	};
+
+	uart0_sleep: uart0_sleep {
+		group1 {
+			psels = <NRF_PSEL(UART_TX, 0, 13)>,
+				<NRF_PSEL(UART_RX, 0, 14)>;
+			low-power-enable;
+		};
+	};
+
+        uart1_uwb_default: uart1_uwb_default {
+                group1 {
+                        psels = <NRF_PSEL(UART_TX, 1, 0)>,
+                                <NRF_PSEL(UART_RX, 0, 24)>;
+                };
+        };
+
+        uart1_uwb_sleep: uart1_uwb_sleep {
+                group1 {
+                        psels = <NRF_PSEL(UART_TX, 1, 0)>,
+                                <NRF_PSEL(UART_RX, 0, 24)>;
+                        low-power-enable;
+                };
+        };
+
+	i2c0_da217_default: i2c0_da217_default {
+		group1 {
+			psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
+				<NRF_PSEL(TWIM_SCL, 0, 19)>;
+		};
+	};
+
+	i2c0_da217_sleep: i2c0_da217_sleep {
+		group1 {
+			psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
+				<NRF_PSEL(TWIM_SCL, 0, 19)>;
+			low-power-enable;
+		};
+	};
+
+        pwm0_buzzer_default: pwm0_buzzer_default {
+                group1 {
+                        psels = <NRF_PSEL(PWM_OUT0, 0, 22)>;
+                };
+        };
+
+        pwm0_buzzer_sleep: pwm0_buzzer_sleep {
+                group1 {
+                        psels = <NRF_PSEL(PWM_OUT0, 0, 22)>;
+                        low-power-enable;
+                };
+        };
+
+	spi2_lcd_default: spi2_lcd_default {
+		group1 {
+			psels = <NRF_PSEL(SPIM_SCK, 0, 20)>,
+				<NRF_PSEL(SPIM_MOSI, 0, 21)>,
+				<NRF_PSEL(SPIM_MISO, 0, 12)>;
+		};
+	};
+
+	spi2_lcd_sleep: spi2_lcd_sleep {
+		group1 {
+			psels = <NRF_PSEL(SPIM_SCK, 0, 20)>,
+				<NRF_PSEL(SPIM_MOSI, 0, 21)>,
+				<NRF_PSEL(SPIM_MISO, 0, 12)>;
+			low-power-enable;
+		};
+	};
+};
+
+&uart0 {
+	status = "okay";
+	current-speed = <115200>;
+	pinctrl-0 = <&uart0_default>;
+	pinctrl-1 = <&uart0_sleep>;
+	pinctrl-names = "default", "sleep";
+};
+
+&uart1 {
+        status = "okay";
+        current-speed = <921600>;
+        pinctrl-0 = <&uart1_uwb_default>;
+        pinctrl-1 = <&uart1_uwb_sleep>;
+        pinctrl-names = "default", "sleep";
+};
+
+&gpio0 {
+        gpio-reserved-ranges = <0 2>, <6 1>, <8 3>;
+};
+
+&i2c0 {
+	compatible = "nordic,nrf-twi";
+	status = "okay";
+	clock-frequency = <400000>;
+	pinctrl-0 = <&i2c0_da217_default>;
+	pinctrl-1 = <&i2c0_da217_sleep>;
+	pinctrl-names = "default", "sleep";
+};
+
+&pwm0 {
+        status = "okay";
+        pinctrl-0 = <&pwm0_buzzer_default>;
+        pinctrl-1 = <&pwm0_buzzer_sleep>;
+        pinctrl-names = "default", "sleep";
+};
+
+&spi2 {
+	status = "okay";
+	cs-gpios = <&gpio0 29 GPIO_ACTIVE_LOW>;
+	pinctrl-0 = <&spi2_lcd_default>;
+	pinctrl-1 = <&spi2_lcd_sleep>;
+	pinctrl-names = "default", "sleep";
+};
+
+&mipi_dbi0 {
+	st7735r: st7735r@0 {
+		compatible = "sitronix,st7735r";
+		status = "okay";
+		reg = <0>;
+                mipi-max-frequency = <16000000>;
+		mipi-mode = "MIPI_DBI_MODE_SPI_4WIRE";
+		color-coding = "MIPI_DBI_MODE_RGB565";
+		width = <80>;
+		height = <160>;
+                x-offset = <24>;
+                y-offset = <0>;
+                madctl = <0xc8>;
+		colmod = <0x05>;
+                invctr = <0x07>;
+                vmctr1 = <0x0e>;
+                pwctr1 = [a2 02 84];
+                pwctr2 = [c5];
+                pwctr3 = [0a 00];
+                pwctr4 = [8a 2a];
+                pwctr5 = [8a ee];
+                frmctr1 = [01 2c 2d];
+                frmctr2 = [01 2c 2d];
+                frmctr3 = [01 2c 2d 01 2c 2d];
+		caset = [00 00 00 4f];
+		raset = [00 00 00 9f];
+		gamctrp1 = [02 1c 07 12 37 32 29 2d 29 25 2b 39 00 01 03 10];
+		gamctrn1 = [03 1d 07 06 2e 2c 29 2d 2e 2e 37 3f 00 00 02 10];
+	};
+};
+
+&led0 {
+	gpios = <&gpio1 10 GPIO_ACTIVE_LOW>;
+};
+
+&led1 {
+	gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
+};
+
+&led2 {
+	gpios = <&gpio1 12 GPIO_ACTIVE_LOW>;
+};
+
+&led3 {
+	gpios = <&gpio1 13 GPIO_ACTIVE_LOW>;
+};
+
+&button0 {
+	gpios = <&gpio1 15 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+};
+
+&button1 {
+	gpios = <&gpio0 3 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+};
+
+&button2 {
+	gpios = <&gpio0 4 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+};
+
+&button3 {
+	gpios = <&gpio0 5 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+};
+
+&flash0 {
+	/* Redefine the "partitions" DTS node. */
+	/delete-node/ partitions;
+
+	partitions {
+		compatible = "fixed-partitions";
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		boot_partition: partition@0 {
+			label = "mcuboot";
+			reg = <0x0 DT_SIZE_K(16)>;
+		};
+
+		slot0_partition: partition@4000 {
+			label = "image-0";
+			reg = <0x4000 DT_SIZE_K(496)>;
+		};
+
+		slot1_partition: partition@80000 {
+			label = "image-1";
+			reg = <0x80000 DT_SIZE_K(496)>;
+		};
+
+		bt_fast_pair_partition: partition@fc000 {
+			reg = <0xfc000 DT_SIZE_K(4)>;
+		};
+
+		storage_partition: partition@fd000 {
+			label = "storage";
+			reg = <0xfd000 DT_SIZE_K(12)>;
+		};
+	};
+};
+
+secondary_app_partition: &slot1_partition {};
