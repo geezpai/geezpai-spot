@@ -43,3 +43,6 @@ JLinkLog.txt
 Kconfig.sysbuild
 *.pem
 .githooks/sensitive-patterns
+
+# Local dev files — keep out of git
+DEVELOPMENT.md
