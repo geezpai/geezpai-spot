@@ -1,0 +1,7 @@
+# Sensitive patterns (one per line, exact match with grep -F)
+# Copy this file to sensitive-patterns and fill in your real values.
+# The file sensitive-patterns is gitignored and will never be committed.
+#
+# Example patterns (replace with actual values):
+# 0x123456
+# dGhpcyBpcyBhIGR1bW15IGtleQo=

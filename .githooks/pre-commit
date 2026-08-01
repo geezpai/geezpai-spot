@@ -1,0 +1,53 @@
+#!/bin/bash
+# Pre-commit hook: block sensitive files from being committed
+# Setup: git config core.hooksPath .githooks
+# Patterns file: .githooks/sensitive-patterns (gitignored, local only)
+set -e
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+BLOCKED_FILES=("Kconfig.sysbuild")
+HOOK_DIR="$(cd "$(dirname "$0")" && pwd)"
+PATTERNS_FILE="$HOOK_DIR/sensitive-patterns"
+blocked=0
+
+# -- check blocked filenames --
+for file in $(git diff --cached --name-only); do
+    filename=$(basename "$file")
+    for bf in "${BLOCKED_FILES[@]}"; do
+        if [ "$filename" = "$bf" ]; then
+            echo -e "${RED}[BLOCKED]${NC} $file — must NOT be committed (use .template instead)"
+            blocked=1
+        fi
+    done
+done
+
+# -- check blocked content patterns (from local file) --
+if [ -f "$PATTERNS_FILE" ]; then
+    for file in $(git diff --cached --name-only); do
+        [ -f "$file" ] || continue
+        [[ "$file" == .githooks/* ]] && continue
+        # read patterns from file (one per line, skip comments and blanks)
+        while IFS= read -r pattern; do
+            [[ -z "$pattern" || "$pattern" == \#* ]] && continue
+            if git show :"$file" 2>/dev/null | grep -qF "$pattern"; then
+                echo -e "${RED}[BLOCKED]${NC} $file — contains sensitive data"
+                blocked=1
+                break
+            fi
+        done < "$PATTERNS_FILE"
+    done
+else
+    echo -e "${RED}WARNING:${NC} $PATTERNS_FILE not found — content scan skipped"
+    echo "  Copy .githooks/sensitive-patterns.template and fill in real patterns."
+fi
+
+if [ "$blocked" -eq 1 ]; then
+    echo -e "\n${RED}Commit aborted — remove sensitive content.${NC}"
+    exit 1
+fi
+
+echo -e "${GREEN}pre-commit OK${NC}"
+exit 0

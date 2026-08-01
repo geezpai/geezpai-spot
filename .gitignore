@@ -38,3 +38,8 @@ compile_commands.json
 # Debug
 JLinkLog.txt
 *.jlink
+
+# Credentials — never commit real values
+Kconfig.sysbuild
+*.pem
+.githooks/sensitive-patterns
