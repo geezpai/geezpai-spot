@@ -1,7 +1,7 @@
 # Geezpai Spot — BLE + UWB 开发板使用说明
 
 > **硬件版本：** NRF_UWB_TEST V1.00
-> **原理图：** `NRF_UWB_TEST V1.00.pdf`
+> **原理图：** `Geezpai_Spot-v1.0.pdf`
 > **主控：** Nordic nRF52840-QFAA (Cortex-M4F @ 64MHz, 1MB Flash, 256KB RAM)
 > **UWB：** MQ-MMK00X 系列模组 (MK8000 + SW8112Q/SW8110Q FEM)
 > **显示：** 0.96 寸 TFT SPI 彩色屏 (ST7735R, 80×160, 8-pin 0.5mm FPC)
