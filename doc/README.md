@@ -6,7 +6,7 @@
 |------|------|
 | [Geezpai_Spot_开发板说明.md](Geezpai_Spot_开发板说明.md) | 引脚映射、跳线配置、供电说明、外设接口 |
 | [nRF52840_IO_Map.md](nRF52840_IO_Map.md) | nRF52840 全部 IO 功能分配速查表 |
-| [NRF_UWB_TEST V1.00.pdf](NRF_UWB_TEST%20V1.00.pdf) | PCB 原理图 |
+| [Geezpai_Spot-v1.0.pdf](Geezpai_Spot-v1.0.pdf) | PCB 原理图 (NRF_UWB_TEST V1.00) |
 | [pcb.png](pcb.png) | PCB 实物照片 |
 
 ## 芯片数据手册
@@ -21,7 +21,6 @@
 
 | 文档 | 说明 |
 |------|------|
-| [Geezpai_Spot_开发指南.md](Geezpai_Spot_开发指南.md) | 环境搭建、模块开发、构建烧录、分支管理 |
 | [../README.md](../README.md) | 项目首页：快速开始、功能特性、编译命令 |
 | [../examples/README.md](../examples/README.md) | 示例索引：6 级 15+ 示例路线图 |
 | [../examples/05_findmy/locator_tag/README.md](../examples/05_findmy/locator_tag/README.md) | 主力固件详解：FHN 工作流程、UWB 集成状态 |

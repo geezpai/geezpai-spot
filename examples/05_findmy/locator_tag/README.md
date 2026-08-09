@@ -215,7 +215,7 @@ Precision Finding ⚠️
 
 ### 新增功能模块
 
-参考 [开发指南](../../doc/Geezpai_Spot_开发指南.md) 中的 "新增功能模块" 章节。模式为：
+参考开发指南 (内部文档) 中的 "新增功能模块" 章节。模式为：
 
 1. 新建 `Kconfig.<module>` → 在 `Kconfig` 中 `rsource`
 2. 新建 `include/app_<module>.h` 声明 API
