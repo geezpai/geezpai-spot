@@ -1,6 +1,7 @@
 # Build outputs
 build/
 _build/
+examples/**/build/
 
 # Python virtual environment
 .venv/
@@ -40,7 +41,7 @@ JLinkLog.txt
 *.jlink
 
 # Credentials — never commit real values
-Kconfig.sysbuild
+/Kconfig.sysbuild
 *.pem
 .githooks/sensitive-patterns
 

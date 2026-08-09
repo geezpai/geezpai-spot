@@ -1,0 +1,9 @@
+#
+# Copyright (c) 2026 Shenzhen Geezpai Technology Co., Ltd.
+#
+# SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
+#
+# 指向根目录的 Kconfig，保持与主构建一致。
+#
+
+rsource "../../../Kconfig"
