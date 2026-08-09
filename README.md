@@ -48,7 +48,7 @@ git clone git@github.com:geezpai/geezpai-spot.git
 cd geezpai-spot
 ```
 
-### 3. 配置密钥（仅 Find My 功能需要）
+### 3. 配置密钥（仅 FHN 定位功能需要）
 
 ```bash
 cp Kconfig.sysbuild.template Kconfig.sysbuild
@@ -114,7 +114,7 @@ west flash -d build
 │               Geezpai Spot Firmware                  │
 │  (Fast Pair Locator Tag + UWB Ranging + Display)    │
 ├─────────────────────────────────────────────────────┤
-│  FHN/FindMy  │  UWB (UCI)  │  UI  │  Power Mgmt   │
+│  FHN (Google) │ UWB (UCI)  │  UI  │  Power Mgmt   │
 ├─────────────────────────────────────────────────────┤
 │  LCD (ST7735) │ G-Sensor (DA217) │ Buzzer │ Button  │
 ├─────────────────────────────────────────────────────┤
@@ -135,7 +135,7 @@ west flash -d build
 - 🚧 **UWB 测距** — TWR 双向测距 (API 开发中)
 - ✅ **TFT 显示** — ST7735R 80×160 彩屏，支持仪表盘 UI
 - ✅ **运动检测** — DA217 G-Sensor，支持 DULT 防跟踪
-- ✅ **蜂鸣器响铃** — Find My 查找响铃 + 开机自检旋律
+- ✅ **蜂鸣器响铃** — FHN 远程响铃 + 开机自检旋律
 - ✅ **电池检测** — ADC 电压采集
 - ✅ **DFU 升级** — MCUboot + SMP BLE OTA
 - ✅ **工厂复位** — 按键触发 + FHN 自动复位

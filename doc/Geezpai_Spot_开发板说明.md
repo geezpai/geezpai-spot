@@ -5,7 +5,7 @@
 > **主控：** Nordic nRF52840-QFAA (Cortex-M4F @ 64MHz, 1MB Flash, 256KB RAM)
 > **UWB：** MQ-MMK00X 系列模组 (MK8000 + SW8112Q/SW8110Q FEM)
 > **显示：** 0.96 寸 TFT SPI 彩色屏 (ST7735R, 80×160, 8-pin 0.5mm FPC)
-> **定位技术：** FindMy / Nearby / UWB
+> **定位技术：** Google Fast Pair / FHN / UWB
 > **固件源码：** [github.com/geezpai/geezpai-spot](https://github.com/geezpai/geezpai-spot)
 > **公司：** 深圳极智派科技有限公司 (Shenzhen Geezpai Technology Co., Ltd.)
 > **作者：** avery.ling@geezpai.com

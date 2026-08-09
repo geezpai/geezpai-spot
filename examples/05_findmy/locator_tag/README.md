@@ -20,7 +20,7 @@
 | **UWB 测距** | 精密测距 (Precision Finding) | `CONFIG_APP_RANGING` | 🚧 开发中 |
 | **TFT 仪表盘** | 80×160 彩屏，显示状态/电池/距离 | `CONFIG_APP_UI` | ✅ |
 | **G-Sensor 防跟踪** | DULT 运动检测 + 未知标签告警 | `CONFIG_BT_FAST_PAIR_FHN_DULT_MOTION_DETECTOR` | ✅ |
-| **蜂鸣器响铃** | Find My 查找响铃 (3 组件) | — | ✅ |
+| **蜂鸣器响铃** | FHN 远程响铃 (3 组件) | — | ✅ |
 | **电池监测** | ADC 电压采集 + 电量百分比 | `CONFIG_APP_BATTERY` | ✅ |
 | **DFU OTA 升级** | MCUboot + SMP BLE 无线升级 | `CONFIG_APP_DFU` | ✅ |
 | **工厂复位** | 按键触发 + FHN 自动复位 | — | ✅ |
@@ -167,7 +167,7 @@ CONFIG_LOG_DEFAULT_LEVEL=4
 | [src/uwb/uci_port.c](../../src/uwb/uci_port.c) | ~195 | UCI UART 传输层 (921600bps) |
 | [src/ranging.c](../../src/ranging.c) | ~1167 | **Precision Finding**: BLE CS 测距状态机 |
 | [src/buzzer.c](../../src/buzzer.c) | ~150 | PWM 蜂鸣器 (音符序列) |
-| [src/ring.c](../../src/ring.c) | — | Find My 响铃动作 |
+| [src/ring.c](../../src/ring.c) | — | FHN 远程响铃 |
 | [src/motion_detector/platform_da217.c](../../src/motion_detector/platform_da217.c) | — | DA217 G-Sensor 驱动 |
 | [src/factory_reset.c](../../src/factory_reset.c) | — | 恢复出厂 + 回调框架 |
 
