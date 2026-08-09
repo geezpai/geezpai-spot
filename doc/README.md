@@ -27,4 +27,4 @@
 
 ## 已知问题
 
-- [../debug-da217-motion-interrupt.md](../debug-da217-motion-interrupt.md) — DA217 运动中断调试
+DA217 G-Sensor 运动中断在特定条件下可能不触发，调试中。

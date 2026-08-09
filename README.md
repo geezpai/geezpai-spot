@@ -193,7 +193,7 @@ geezpai-spot/
 - 📖 [开发指南](../doc/Geezpai_Spot_开发指南.md) — 环境搭建、模块开发、构建烧录
 - 📖 [开发文档索引](doc/README.md) — 全部文档、数据手册、已知问题
 - 📖 [SDK 规划](../doc/SDK_规划.md) — 架构设计、模块评估、路线图 (内部)
-- 🐛 [已知问题](debug-da217-motion-interrupt.md) — DA217 运动中断调试
+- 🐛 已知问题：DA217 G-Sensor 运动中断偶发不触发
 
 ---
 

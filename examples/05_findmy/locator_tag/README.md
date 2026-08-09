@@ -228,7 +228,7 @@ Precision Finding ⚠️
 - **Debug 构建**: 使用 `configuration/prj.conf` (默认)
 - **Release 构建**: 使用 `configuration/prj_release.conf` (关闭串口日志，减小固件体积)
 - **UWB 调试**: 可断开 J4/J5 跳线抓 UART 波形
-- **DA217 中断**: 已知 bug，见 [debug-da217-motion-interrupt.md](../../debug-da217-motion-interrupt.md)
+- **DA217 中断**: 已知偶发不触发，调试中
 
 ---
 
