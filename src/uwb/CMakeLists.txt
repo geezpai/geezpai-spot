@@ -6,13 +6,23 @@
 #
 
 set(APP_UWB_HOST_ROOT
-    "F:/work/资料/uwb/翰巍微/SDKs/SDKs/SDK_V0.7.2/host/uci_host_v0.8.1_r0"
+    ""
     CACHE PATH
-    "Path to the Hanwei UCI host SDK")
+    "Path to MKSEMI UCI Host SDK (uci_host_v0.8.1_r0). Required when CONFIG_APP_UWB=y.")
 
-if(NOT EXISTS "${APP_UWB_HOST_ROOT}/src/uci_api/uci_api.c")
-  message(FATAL_ERROR "APP_UWB_HOST_ROOT is invalid: ${APP_UWB_HOST_ROOT}")
-endif()
+if(CONFIG_APP_UWB)
+  if(NOT APP_UWB_HOST_ROOT)
+    message(FATAL_ERROR
+      "APP_UWB_HOST_ROOT is not set.\n"
+      "  Set it on the cmake command line:\n"
+      "    -DAPP_UWB_HOST_ROOT=<path>/uci_host_v0.8.1_r0\n"
+      "  Or set the environment variable:\n"
+      "    set APP_UWB_HOST_ROOT=<path>/uci_host_v0.8.1_r0")
+  endif()
+
+  if(NOT EXISTS "${APP_UWB_HOST_ROOT}/src/uci_api/uci_api.c")
+    message(FATAL_ERROR "APP_UWB_HOST_ROOT is invalid: ${APP_UWB_HOST_ROOT}")
+  endif()
 
 target_include_directories(app PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}
@@ -35,3 +45,5 @@ target_sources(app PRIVATE
   ${APP_UWB_HOST_ROOT}/src/uci_lib/uci_ntf.c
   ${APP_UWB_HOST_ROOT}/src/uci_lib/uci_resp.c
 )
+
+endif() # CONFIG_APP_UWB
