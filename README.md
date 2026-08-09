@@ -23,8 +23,8 @@
 | **供电** | USB Type-C / 电池 | 双电源域独立测流 |
 | **天线** | PCB 天线 / IPEX 可选 | — |
 
-📖 完整硬件参考：[Geezpai Spot 开发板说明](../doc/Geezpai_Spot_开发板说明.md)
-📖 SDK 规划：[Geezpai Spot SDK 规划](../doc/SDK_规划.md)
+📖 完整硬件参考：[Geezpai Spot 开发板说明](doc/Geezpai_Spot_开发板说明.md)
+📖 开发文档索引：[doc/README.md](doc/README.md)
 
 ---
 
@@ -122,7 +122,7 @@ west flash -d build
 └─────────────────────────────────────────────────────┘
 ```
 
-详细架构和模块设计见 [SDK 规划文档](../doc/SDK_规划.md) 和 [开发指南](../doc/Geezpai_Spot_开发指南.md)。
+详细架构和模块设计见 [开发文档索引](doc/README.md)。
 
 ---
 
@@ -188,10 +188,10 @@ geezpai-spot/
 
 ## 开发指南
 
-- 📖 [开发板使用说明](../doc/Geezpai_Spot_开发板说明.md) — 引脚映射、跳线配置、供电说明
-- 📖 [开发指南](../doc/Geezpai_Spot_开发指南.md) — 环境搭建、模块开发、构建烧录
-- 📖 [SDK 规划](../doc/SDK_规划.md) — 架构设计、模块评估、路线图
-- 📖 [GitHub 配置](../doc/README_GitHub_配置.md) — SSH Key + 仓库配置
+- 📖 [开发板使用说明](doc/Geezpai_Spot_开发板说明.md) — 引脚映射、跳线配置、供电说明
+- 📖 [开发指南](doc/Geezpai_Spot_开发指南.md) — 环境搭建、模块开发、构建烧录
+- 📖 [开发文档索引](doc/README.md) — 全部文档、数据手册、已知问题
+- 📖 [SDK 规划](../doc/SDK_规划.md) — 架构设计、模块评估、路线图 (内部)
 - 🐛 [已知问题](debug-da217-motion-interrupt.md) — DA217 运动中断调试
 
 ---
