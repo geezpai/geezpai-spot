@@ -49,7 +49,6 @@ $appDir = $PSScriptRoot
 
 $env:ZEPHYR_BASE = $zephyrBase
 $env:ZEPHYR_SDK_INSTALL_DIR = $zephyrSdk
-$env:PATH = "$(Join-Path $toolchainRoot 'opt\bin');$(Join-Path $toolchainRoot 'bin');$env:PATH"
 
 # 官方 locator_tag 样例使用 sysbuild（包含 MCUboot + 主应用）
 $westArgs = @(
