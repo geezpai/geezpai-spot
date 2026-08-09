@@ -1,8 +1,8 @@
-# nRF52840 IO Map (参考草案)
+# nRF52840 IO Map (原理图阅读笔记)
 
-> ⚠️ **本文档为早期原理图阅读笔记，部分引脚标注可能不准确。**
-> 开发请以 [Geezpai_Spot_开发板说明.md](Geezpai_Spot_开发板说明.md) 第 3 节的 IO 分配表为准，
-> 固件请以 `include/app_board_pins.h` 为准。
+> ⚠️ **本文档仅供参考。IO 分配以经过验证的源码为准：**
+> - [include/app_board_pins.h](../include/app_board_pins.h) — 权威引脚定义
+> - [Geezpai_Spot_开发板说明.md](Geezpai_Spot_开发板说明.md) 第 3 节 — 完整 IO 分配表
 
 ## 概要
 - 芯片：`nRF52840-QFAA`
