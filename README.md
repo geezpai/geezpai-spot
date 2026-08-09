@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-Nordic%205--Clause-blue)](LICENSE)
 [![NCS Version](https://img.shields.io/badge/nRF%20Connect%20SDK-v3.3.0-00A9CE)](https://github.com/nrfconnect/sdk-nrf)
-[![Board](https://img.shields.io/badge/board-NRF__UWB__TEST%20V1.00-green)](hw/)
+[![Board](https://img.shields.io/badge/hardware-Geezpai%20Spot%20v1.0-green)](doc/)
 
 **Geezpai Spot** 是深圳极智派科技开源的一款 BLE + UWB 融合开发板。基于 Nordic nRF52840 主控和 MQ-MMK00X UWB 模组，支持 **Google Find Hub Network (FHN) 定位** 和 **UWB 精密测距**，同时板载 TFT 彩屏、G-Sensor、蜂鸣器，适合防丢标签、室内定位、IoT 终端等产品开发。
 
@@ -174,7 +174,7 @@ geezpai-spot/
 
 | 板子 | 目标 | FHN | UWB | 说明 |
 |------|------|-----|-----|------|
-| **Geezpai Spot V1.00** | `nrf52840dk_nrf52840` | ✅ | ✅ | 主开发板 |
+| **Geezpai_Spot-v1.0** | `nrf52840dk_nrf52840` | ✅ | ✅ | 主开发板 |
 | nRF52840 DK | `nrf52840dk_nrf52840` | ✅ | ❌ | 无 UWB 模组 |
 | nRF52833 DK | `nrf52833dk_nrf52833` | ✅ | ❌ | — |
 | nRF52832 DK | `nrf52dk_nrf52832` | ✅ | ❌ | — |

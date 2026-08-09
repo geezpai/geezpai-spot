@@ -6,7 +6,7 @@
 
 ## 概要
 - 芯片：`nRF52840-QFAA`
-- 原理图：`Geezpai_Spot-v1.0.pdf` (NRF_UWB_TEST V1.00)
+- 原理图：`Geezpai_Spot-v1.0.pdf`
 - 用途：快速对照原理图网络名与 nRF GPIO
 
 ## Pin Map

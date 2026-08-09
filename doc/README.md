@@ -6,7 +6,7 @@
 |------|------|
 | [Geezpai_Spot_开发板说明.md](Geezpai_Spot_开发板说明.md) | 引脚映射、跳线配置、供电说明、外设接口 |
 | [nRF52840_IO_Map.md](nRF52840_IO_Map.md) | nRF52840 全部 IO 功能分配速查表 |
-| [Geezpai_Spot-v1.0.pdf](Geezpai_Spot-v1.0.pdf) | PCB 原理图 (NRF_UWB_TEST V1.00) |
+| [Geezpai_Spot-v1.0.pdf](Geezpai_Spot-v1.0.pdf) | PCB 原理图 |
 | [pcb.png](pcb.png) | PCB 实物照片 |
 
 ## 芯片数据手册

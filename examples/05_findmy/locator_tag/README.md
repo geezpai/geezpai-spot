@@ -111,7 +111,7 @@ RX: P0.14
 
 | 组件 | 型号 | 连接 | 必需? |
 |------|------|------|-------|
-| 主控板 | Geezpai Spot V1.00 | — | ✅ 必需 |
+| 主控板 | Geezpai_Spot-v1.0 | — | ✅ 必需 |
 | UWB 模组 | MQ-MMK00X | UART1 + INT | 可选 (CONFIG_APP_UWB) |
 | TFT 屏 | 0.96" ST7735R | SPI2 | 可选 |
 | G-Sensor | DA217 | I2C0 | 可选 (DULT) |

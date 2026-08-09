@@ -8,7 +8,7 @@ assignees: ''
 
 ## 环境信息
 
-- **硬件版本**: [例如: NRF_UWB_TEST V1.00]
+- **硬件版本**: [例如: Geezpai_Spot-v1.0]
 - **固件版本**: [`git log --oneline -1` 的输出]
 - **构建目标**: [例如: nrf52840dk_nrf52840]
 

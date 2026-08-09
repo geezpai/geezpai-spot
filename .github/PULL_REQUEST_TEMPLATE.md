@@ -11,7 +11,7 @@
 ## 测试
 
 - [ ] `./build.ps1` 通过
-- [ ] 在 Geezpai Spot V1.00 实板上验证
+- [ ] 在 Geezpai_Spot-v1.0 实板上验证
 - [ ] 串口日志正常
 
 ## Checklist
