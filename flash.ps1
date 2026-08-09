@@ -19,8 +19,14 @@ if (-not $env:ZEPHYR_BASE) { throw "未找到 Zephyr。请设置 ZEPHYR_BASE 环
 $zephyrBase = $env:ZEPHYR_BASE
 
 if (-not $env:ZEPHYR_SDK_INSTALL_DIR) {
-    $sdkCandidates = @("C:\ncs\toolchains\936afb6332\opt\zephyr-sdk")
-    foreach ($c in $sdkCandidates) { if (Test-Path $c) { $env:ZEPHYR_SDK_INSTALL_DIR = $c; break } }
+    $sdkCandidates = @(
+        "C:\ncs\toolchains\936afb6332\opt\zephyr-sdk",
+        (Join-Path $env:USERPROFILE "ncs\toolchains\*\opt\zephyr-sdk")
+    )
+    foreach ($c in $sdkCandidates) {
+        $resolved = (Resolve-Path $c -ErrorAction SilentlyContinue | Select-Object -First 1)
+        if ($resolved) { $env:ZEPHYR_SDK_INSTALL_DIR = $resolved.Path; break }
+    }
 }
 $zephyrSdk = $env:ZEPHYR_SDK_INSTALL_DIR
 $toolchainBin = Join-Path (Split-Path $zephyrSdk -Parent) "bin"
