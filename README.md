@@ -32,13 +32,14 @@
 
 ### 1. 安装 nRF Connect SDK v3.3.0
 
-推荐使用 **nRF Connect for Desktop** 的 Toolchain Manager 一键安装。环境要求：
+推荐使用 **nRF Connect for Desktop** 的 Toolchain Manager 一键安装 NCS v3.3.0。
 
-| 工具 | 路径 |
+构建脚本会自动检测以下路径（也可手动设置环境变量 `ZEPHYR_BASE` 和 `ZEPHYR_SDK_INSTALL_DIR`）：
+
+| 路径 | 说明 |
 |------|------|
-| NCS 根目录 | `C:\ncs\v3.3.0` |
-| Zephyr | `C:\ncs\v3.3.0\zephyr` |
-| 工具链 | `C:\ncs\toolchains\936afb6332` |
+| `C:\ncs\v3.3.0\zephyr` | Zephyr RTOS (NCS 默认路径) |
+| `C:\ncs\toolchains\<hash>\opt\zephyr-sdk` | ARM 工具链 (NCS 默认路径) |
 
 ### 2. 克隆仓库
 

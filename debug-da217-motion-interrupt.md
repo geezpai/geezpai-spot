@@ -1,8 +1,7 @@
-# Debug Session: da217-motion-interrupt
-- **Status**: [OPEN]
-- **Issue**: DA217 G-sensor motion interrupt does not trigger as expected on the device.
-- **Debug Server**: Pending
-- **Log File**: Pending
+# Known Issue: DA217 Motion Interrupt
+
+> **Status**: Open — 运动中断未按预期触发。
+> 详细调试进展见下方假设列表。修复后请更新本文档。
 
 ## Reproduction Steps
 1. Build and download current firmware to the board.

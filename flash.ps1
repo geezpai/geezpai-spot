@@ -10,15 +10,32 @@ param(
 # 不使用 Stop —— python/west 把警告写到 stderr 时会被误判为错误中断
 $ErrorActionPreference = "Continue"
 
-$toolchainRoot = "C:\ncs\toolchains\936afb6332"
-$zephyrBase = "C:\ncs\v3.3.0\zephyr"
-$zephyrSdk = Join-Path $toolchainRoot "opt\zephyr-sdk"
-$pythonExe = Join-Path $toolchainRoot "opt\bin\python.exe"
-$jlinkCommander = "C:\Softwares\Program Files (x86)\SEGGER\JLink_V642f\JLink.exe"
-$jlinkCommanderFallbacks = @(
-    "C:\Program Files (x86)\SEGGER\JLink\JLink.exe",
-    "C:\Program Files\SEGGER\JLink\JLink.exe"
-)
+# NCS 工具链 — 自动检测 (也可通过环境变量覆盖)
+if (-not $env:ZEPHYR_BASE) {
+    $candidates = @("C:\ncs\v3.3.0\zephyr", "$env:USERPROFILE\ncs\v3.3.0\zephyr")
+    foreach ($c in $candidates) { if (Test-Path $c) { $env:ZEPHYR_BASE = $c; break } }
+}
+if (-not $env:ZEPHYR_BASE) { throw "未找到 Zephyr。请设置 ZEPHYR_BASE 环境变量。" }
+$zephyrBase = $env:ZEPHYR_BASE
+
+if (-not $env:ZEPHYR_SDK_INSTALL_DIR) {
+    $sdkCandidates = @("C:\ncs\toolchains\936afb6332\opt\zephyr-sdk")
+    foreach ($c in $sdkCandidates) { if (Test-Path $c) { $env:ZEPHYR_SDK_INSTALL_DIR = $c; break } }
+}
+$zephyrSdk = $env:ZEPHYR_SDK_INSTALL_DIR
+$toolchainBin = Join-Path (Split-Path $zephyrSdk -Parent) "bin"
+$pythonExe = Join-Path $toolchainBin "python.exe"
+$env:PATH = "$toolchainBin;$(Join-Path (Split-Path $zephyrSdk -Parent) 'bin');$env:PATH"
+
+# J-Link — PATH 中找，失败则尝试常见路径
+$jlinkCommander = (Get-Command JLink.exe -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source -First 1)
+if (-not $jlinkCommander) {
+    $jlinkFallbacks = @(
+        "C:\Program Files\SEGGER\JLink\JLink.exe",
+        "C:\Program Files (x86)\SEGGER\JLink\JLink.exe"
+    )
+    foreach ($c in $jlinkFallbacks) { if (Test-Path $c) { $jlinkCommander = $c; break } }
+}
 
 if (-not (Test-Path $jlinkCommander)) {
     $jlinkFromPath = (Get-Command JLink.exe -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source -First 1)
