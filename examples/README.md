@@ -25,11 +25,12 @@
 
 ## Level 3: BLE 无线
 
-| 示例 | 说明 | 硬件依赖 |
-|------|------|---------|
-| beacon (TODO) | BLE Beacon 广播 | BLE |
-| peripheral (TODO) | BLE 从机 + 自定义 Service | BLE |
-| central (TODO) | BLE 主机扫描 | BLE |
+> BLE 示例直接使用 [NCS 官方 samples](https://github.com/nrfconnect/sdk-nrf/tree/main/samples/bluetooth)，
+> 无需重复开发。常用：
+> - `peripheral_uart` — BLE 从机 + UART
+> - `central_uart` — BLE 主机扫描
+> - `beacon` — BLE Beacon 广播
+> - `peripheral_lbs` — LED Button Service
 
 ## Level 4: UWB 测距
 
